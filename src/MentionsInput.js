@@ -101,6 +101,7 @@ const propTypes = {
     PropTypes.element,
     PropTypes.arrayOf(PropTypes.element),
   ]).isRequired,
+  renderMentionsInput: PropTypes.func
 }
 
 class MentionsInput extends React.Component {
@@ -237,11 +238,11 @@ class MentionsInput extends React.Component {
   }
 
   renderInput = (props) => {
-    return <input type="text" ref={this.setInputRef} {...props} />
+    return props.renderMentionsInput ? renderMentionsInput(props) : <input type="text" ref={this.setInputRef} {...props} />
   }
 
   renderTextarea = (props) => {
-    return <textarea ref={this.setInputRef} {...props} />
+    return props.renderMentionsInput ? renderMentionsInput(props) : <textarea ref={this.setInputRef} {...props} />
   }
 
   setInputRef = (el) => {
